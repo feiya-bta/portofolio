@@ -20,6 +20,11 @@
         </div>
     </nav>
 
+    <!-- Hamburger for mobile -->
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+        <span></span><span></span><span></span>
+    </button>
+
     <header id="main">
         <h1>Olivia's Portfolio</h1>
         <p class="subtitle">designer · linguist · creator</p>
@@ -30,10 +35,10 @@
         <!-- PROFILE -->
         <section class="profile-intro" id="profile">
             <div class="profile-container">
-                <div class="profile-pic reveal">
+                <div class="profile-pic">
                     <img src="image/profilepicture.png" alt="Olivia Ng">
                 </div>
-                <div class="profile-text reveal reveal-delay-2">
+                <div class="profile-text reveal reveal-delay-1">
                     <h2>オリビアン Olivia Ng</h2>
                     <p>Hello everyone, welcome to my page. My name is Olivia.<br>
                     皆さん、こんにちは。私のページへようこそ。オリビアです。</p>
@@ -144,6 +149,51 @@
         <!-- CREATIONS -->
         <section id="creation" class="section-creations">
             <h2 class="section-title reveal">Creations</h2>
+
+            <!-- WEB PROJECTS -->
+            <p class="creation-label reveal">web projects</p>
+            <div class="projects-grid">
+
+                <div class="project-card reveal reveal-delay-1">
+                    <div class="project-preview">
+                        <img src="image/rakurakudousei-preview.png" alt="らくらく同棲 preview" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                        <div class="project-preview-placeholder">
+                            <span>らくらく同棲</span>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tags">
+                            <span class="tag">web app</span>
+                            <span class="tag">japanese</span>
+                        </div>
+                        <h3>らくらく同棲</h3>
+                        <p>A cohabitation expense-splitting app for couples — track shared payments, manage shopping lists, and settle monthly balances together.</p>
+                        <a href="https://feiya-bta.github.io/rakurakudousei/" target="_blank" rel="noopener" class="project-link">View Live →</a>
+                    </div>
+                </div>
+
+                <div class="project-card reveal reveal-delay-2">
+                    <div class="project-preview">
+                        <img src="image/rakurakushift-preview.png" alt="らくらくシフト preview" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                        <div class="project-preview-placeholder">
+                            <span>らくらくシフト</span>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tags">
+                            <span class="tag">web app</span>
+                            <span class="tag">japanese</span>
+                        </div>
+                        <h3>らくらくシフト</h3>
+                        <p>A lightweight shift scheduling app — built for small teams to organise and view work schedules simply and efficiently.</p>
+                        <a href="https://feiya-bta.github.io/rakurakushift/" target="_blank" rel="noopener" class="project-link">View Live →</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ILLUSTRATIONS -->
+            <p class="creation-label reveal" style="margin-top: 60px;">illustrations</p>
             <div class="works-grid">
 
                 <div class="work-card reveal reveal-delay-1" onclick="openPopup('hachimaru')">
@@ -167,6 +217,20 @@
                     <p>sukinamonomap</p>
                 </div>
 
+                <div class="work-card reveal reveal-delay-1" onclick="openPopup('placeholder1')">
+                    <div class="work-img-wrapper work-img-empty">
+                        <span class="empty-plus">+</span>
+                    </div>
+                    <p class="empty-label">coming soon</p>
+                </div>
+
+                <div class="work-card reveal reveal-delay-2" onclick="openPopup('placeholder2')">
+                    <div class="work-img-wrapper work-img-empty">
+                        <span class="empty-plus">+</span>
+                    </div>
+                    <p class="empty-label">coming soon</p>
+                </div>
+
             </div>
         </section>
 
@@ -175,18 +239,18 @@
             <h2 class="section-title reveal">Contact Me</h2>
             <form class="contact-form reveal reveal-delay-2" onsubmit="handleSubmit(event)">
                 <div class="form-group">
-                    <label for="contactName">Name</label>
+                    <label for="contactName">氏名</label>
                     <input type="text" id="contactName" placeholder="Your name" required>
                 </div>
                 <div class="form-group">
-                    <label for="contactEmail">E-mail</label>
+                    <label for="contactEmail">メール</label>
                     <input type="email" id="contactEmail" placeholder="you@example.com" required>
                 </div>
                 <div class="form-group">
-                    <label for="contactMsg">Message</label>
+                    <label for="contactMsg">メッセージ</label>
                     <textarea id="contactMsg" rows="5" placeholder="Say hello..."></textarea>
                 </div>
-                <button type="submit" class="submit-btn">Send Message</button>
+                <button type="submit" class="submit-btn">送信</button>
             </form>
         </section>
 
@@ -213,6 +277,20 @@
     </div>
 
     <script>
+        /* ── Mobile nav toggle ── */
+        const navToggle = document.getElementById('navToggle');
+        const navEl = document.getElementById('mainNav');
+        navToggle.addEventListener('click', () => {
+            navEl.classList.toggle('nav-open');
+            navToggle.classList.toggle('is-open');
+        });
+        document.querySelectorAll('.nav-container a').forEach(a => {
+            a.addEventListener('click', () => {
+                navEl.classList.remove('nav-open');
+                navToggle.classList.remove('is-open');
+            });
+        });
+
         /* ── Navbar shrink on scroll ── */
         const nav = document.getElementById('mainNav');
         window.addEventListener('scroll', () => {
@@ -227,8 +305,7 @@
                     observer.unobserve(e.target);
                 }
             });
-        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
+        }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
         /* ── Popup data ── */
@@ -253,12 +330,14 @@
                 apps: "Figma, Illust",
                 desc: "A custom conceptual map layout illustrating all my favourite things — a personal visual world brought to life through careful layout and illustration.",
                 img: "image/sukinamono.png"
-            }
+            },
+            placeholder1: null,
+            placeholder2: null
         };
 
         function openPopup(id) {
             const d = projectData[id];
-            if (!d) return;
+            if (!d) return; /* empty slots do nothing */
             document.getElementById('popupTitle').textContent = d.title;
             document.getElementById('popupTime').textContent  = d.time;
             document.getElementById('popupApps').textContent  = d.apps;
@@ -277,6 +356,15 @@
             if (e.target === document.getElementById('workPopup')) closePopup();
         }
 
+        /* ── Fullscreen on popup image click ── */
+        document.getElementById('popupImg').addEventListener('click', function () {
+            if (!document.fullscreenElement) {
+                this.requestFullscreen().catch(() => {});
+            } else {
+                document.exitFullscreen();
+            }
+        });
+
         document.addEventListener('keydown', e => {
             if (e.key === 'Escape') {
                 if (document.fullscreenElement) {
@@ -284,15 +372,6 @@
                 } else {
                     closePopup();
                 }
-            }
-        });
-
-        /* ── Fullscreen on popup image click ── */
-        document.getElementById('popupImg').addEventListener('click', function () {
-            if (!document.fullscreenElement) {
-                this.requestFullscreen().catch(() => {});
-            } else {
-                document.exitFullscreen();
             }
         });
 
