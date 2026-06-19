@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olivia's Blog</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-blog">
+
+    <div class="bg-container"></div>
+
+    <nav id="mainNav">
+        <div class="nav-container">
+            <a href="index.html">mainpage</a>
+            <a href="blog.html">blog</a>
+        </div>
+    </nav>
+
+    <div class="blog-header">
+        <h1>Olivia's Blog</h1>
+        <p>日記 · diary · thoughts</p>
+    </div>
+
+    <main class="blog-layout">
+
+        <aside class="blog-sidebar">
+            <div class="directory-card reveal">
+                <h3 class="directory-toggle">2025年 ▼</h3>
+                <ul class="directory-list">
+                    <li><a href="#post-1022">10月22日</a></li>
+                    <li><a href="#post-1110">11月10日</a></li>
+                </ul>
+
+                <h3 class="directory-toggle" style="margin-top: 20px;">2026年 ▶</h3>
+                <ul class="directory-list" style="display: none;">
+                    <li><a href="#" onclick="return false;" style="color: #b0bec5; pointer-events: none; cursor: default;">coming soon...</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <section class="blog-container">
+
+            <article class="blog-post reveal" id="post-1022">
+                <div class="blog-content">
+                    <h2>学校が、一番大好きな場所に変わった日</h2>
+                    <span class="blog-date">2025 / 10 / 27 — Monday</span>
+                    <p>
+                        今日は少し早めに学校へ行って勉強。9時半ごろ、彼もやってきた。
+                        二人で一緒にベトナム語の勉強をしたんだけど、彼が本当に可愛くて。
+                        <br><br>
+                        彼がそばにいるだけで、胸がずっとドキドキしてる。
+                        元々学校が大好きけれども、彼の存在でもっともっと学校好きになりました。
+                        授業が終わるのが名残惜しくて、「もっと彼のそばにいたい」なんて思ってしまうくらい。
+                        <br><br>
+                        帰り道、隣にいる彼の気配を感じるたびに、また心臓が爆発しそうになる。いつも良い匂いがするんだ。
+                        「今日、めちゃくちゃ楽しかったよ」
+                        そう伝えると、彼は「わたしも」と返してくれた。
+                        <br><br>
+                        時が止まればいいのに。彼のあの笑顔が本当に大好き。
+                        帰りたくない、ずっと一緒にいたい。そんな気持ちでいっぱいの夕方。
+                    </p>
+                </div>
+            </article>
+
+            <article class="blog-post reveal reveal-delay-2" id="post-1110">
+                <div class="blog-content">
+                    <h2>彼と過ごす幸せな時間</h2>
+                    <span class="blog-date">2025 / 11 / 10 — Monday</span>
+                    <p>
+                        今日は学校でスーツチェックがあります。彼のスーツ姿を見るだけで、心臓がドキドキしちゃう。
+                        私もスーツでした。彼に「めちゃくちゃ綺麗だね」って言われました。お昼も一緒に過ごした。
+                        <br><br>
+                        実はお昼に彼のネクタイを結んであげたくて挑戦してみたんだけど……少し上手くいかなくて、
+                        結局友達にお願いすることに。悔しくて落ち込んでいる私に、彼は「大丈夫だよ、君にやってもらったから」って優しく慰めてくれた。
+                        「また次もよろしくね」なんて言われたら、もう頑張るしかないよね。
+                        スーツ姿の彼、誰よりも素敵でハンサムだったよ。
+                        <br><br>
+                        学校帰り一緒に電車に乗った。秋葉原までずっと一緒だった。離れなきゃいけないのが本当にいやだ。今日もとても楽しい一日でした。
+                        <br><br>
+                        21時ごろ、彼からメッセージが届きました。「今から会いに行く」そして、本当にお家まで会いに来てくれました。
+                        昼、離れたくない気持ちが彼に届いたかしら？3時間ぐらい一緒に勉強をして、彼はまたお家に帰りました。お家まで1時間もかかるのに。
+                        今日も幸せな1日でした。
+                    </p>
+                </div>
+            </article>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>©2025 Olivia's Portfolio</p>
+    </footer>
+
+    <script>
+        /* ── Navbar shrink on scroll ── */
+        const nav = document.getElementById('mainNav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 40);
+        }, { passive: true });
+
+        /* ── Scroll reveal ── */
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('revealed');
+                    observer.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        /* ── Sidebar year toggles ── */
+        document.querySelectorAll('.directory-toggle').forEach(toggle => {
+            toggle.addEventListener('click', function () {
+                const list = this.nextElementSibling;
+                const isOpen = list.style.display !== 'none';
+                list.style.display = isOpen ? 'none' : 'flex';
+                this.textContent = this.textContent
+                    .replace(isOpen ? '▼' : '▶', isOpen ? '▶' : '▼');
+            });
+        });
+    </script>
+
+</body>
+</html>
