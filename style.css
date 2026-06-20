@@ -6,8 +6,8 @@ html { scroll-behavior: smooth; }
 
 body {
     font-family: 'M PLUS Rounded 1c', sans-serif;
-    color: #4a5568; /* Mempertahankan abu-abu tua asli untuk keterbacaan terbaik */
-    background-color: #e1e3e5; /* Latar belakang utama: e1e3e5 */
+    color: #b9bdcc;
+    background-color: #383f4f;
     line-height: 1.7;
     overflow-x: hidden;
 }
@@ -19,28 +19,25 @@ body.popup-active { overflow: hidden; }
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
     z-index: -2;
-    /* Radial gradient menggunakan e1e3e5 dan cedbce untuk kedalaman lembut */
-    background: radial-gradient(ellipse at 15% 25%, rgba(225,227,229,1) 0%, rgba(206,219,206,0.6) 60%, rgba(225,227,229,1) 100%);
+    background: #383f4f;
 }
 .bg-container::before, .bg-container::after {
     content: '';
     position: absolute;
     border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.3;
+    filter: blur(100px);
+    opacity: 0.18;
     pointer-events: none;
 }
 .bg-container::before {
     width: 600px; height: 600px;
-    /* Lingkaran dekorasi menggunakan a6cbb7 untuk aksen hangat */
-    background: radial-gradient(circle, rgba(166,203,183,0.6), transparent 70%);
+    background: radial-gradient(circle, rgba(221,196,185,0.7), transparent 70%);
     top: -100px; right: -100px;
     animation: drift 18s ease-in-out infinite alternate;
 }
 .bg-container::after {
     width: 500px; height: 500px;
-    /* Lingkaran dekorasi menggunakan cedbce untuk kelembutan */
-    background: radial-gradient(circle, rgba(206,219,206,0.5), transparent 70%);
+    background: radial-gradient(circle, rgba(106,118,153,0.6), transparent 70%);
     bottom: 10%; left: -80px;
     animation: drift 22s ease-in-out infinite alternate-reverse;
 }
@@ -55,18 +52,16 @@ nav {
     top: 0; left: 0; width: 100%;
     z-index: 999;
     padding: 18px 0;
-    /* Background nav bersih agar text kontras */
-    background: rgba(255,255,255,0.85);
+    background: rgba(56,63,79,0.85);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
-    /* Border bawah menggunakan a6cbb7 lembut */
-    border-bottom: 1px solid rgba(166,203,183,0.3);
-    box-shadow: 0 2px 20px rgba(0,0,0,0.03);
+    border-bottom: 1px solid rgba(139,146,167,0.15);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.15);
     transition: padding 0.3s ease, box-shadow 0.3s ease;
 }
 nav.scrolled {
     padding: 12px 0;
-    box-shadow: 0 4px 30px rgba(0,0,0,0.06);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.2);
 }
 .nav-container {
     max-width: 1000px;
@@ -78,7 +73,7 @@ nav.scrolled {
 }
 nav a {
     text-decoration: none;
-    color: #4a5568; /* Text nav: abu-abu tua asli */
+    color: #b9bdcc;
     font-family: 'M PLUS Rounded 1c', sans-serif;
     font-weight: 500;
     font-size: 0.9rem;
@@ -93,14 +88,13 @@ nav a::after {
     position: absolute;
     bottom: 0; left: 0;
     width: 100%; height: 1.5px;
-    /* Garis bawah hover menggunakan aksen a6cbb7 */
-    background: #a6cbb7;
+    background: linear-gradient(90deg, #b9bdcc, #b9bdcc);
     transform: scaleX(0);
     transform-origin: right center;
     transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
     border-radius: 2px;
 }
-nav a:hover { color: #a6cbb7; } /* Hover text nav menggunakan a6cbb7 */
+nav a:hover { color: #b9bdcc; }
 nav a:hover::after { transform: scaleX(1); transform-origin: left center; }
 
 /* Hamburger button (mobile only) */
@@ -109,7 +103,7 @@ nav a:hover::after { transform: scaleX(1); transform-origin: left center; }
     position: fixed;
     top: 14px; right: 18px;
     z-index: 1000;
-    background: rgba(255,255,255,0.9);
+    background: rgba(56,63,79,0.92);
     border: none;
     border-radius: 10px;
     width: 42px; height: 42px;
@@ -118,14 +112,13 @@ nav a:hover::after { transform: scaleX(1); transform-origin: left center; }
     align-items: center;
     gap: 5px;
     cursor: pointer;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.2);
     padding: 0;
 }
 .nav-toggle span {
     display: block;
     width: 20px; height: 2px;
-    /* Garis hamburger menggunakan a6cbb7 */
-    background: #a6cbb7;
+    background: #b9bdcc;
     border-radius: 2px;
     transition: transform 0.25s ease, opacity 0.25s ease;
 }
@@ -151,8 +144,7 @@ section { padding: 80px 5%; width: 100%; }
 .section-title {
     font-family: 'Borel', sans-serif;
     font-size: clamp(1.9rem, 5vw, 2.4rem);
-    /* Judul section menggunakan cokelat tua yang hangat agar serasi dengan sage */
-    color: #3d2f2b;
+    color: #b9bdcc;
     margin-bottom: 50px;
     text-align: center;
     display: block;
@@ -161,13 +153,12 @@ section { padding: 80px 5%; width: 100%; }
     content: '';
     display: block;
     width: 36px; height: 2px;
-    /* Garis bawah judul section menggunakan gradient a6cbb7 ke cokelat tua */
-    background: linear-gradient(90deg, #a6cbb7, #3d2f2b);
+    background: linear-gradient(90deg, #b9bdcc, #b9bdcc);
     margin: 12px auto 0;
     border-radius: 2px;
 }
 
-/* ── Hero Header ── */
+/* ── Hero ── */
 .page-portfolio header {
     width: 100%;
     padding-top: 150px;
@@ -177,8 +168,7 @@ section { padding: 80px 5%; width: 100%; }
 .page-portfolio header h1 {
     font-family: 'Borel', sans-serif;
     font-size: clamp(2.2rem, 7vw, 3.8rem);
-    /* Judul hero menggunakan cokelat tua hangat agar serasi dengan sage */
-    color: #3d2f2b;
+    color: #b9bdcc;
     letter-spacing: -0.5px;
     opacity: 0;
     transform: translateY(18px);
@@ -187,8 +177,7 @@ section { padding: 80px 5%; width: 100%; }
 @keyframes heroIn { to { opacity: 1; transform: translateY(0); } }
 .page-portfolio header .subtitle {
     font-size: clamp(0.8rem, 2.5vw, 0.95rem);
-    /* Subtitle menggunakan abu-abu tua asli untuk kebersihan */
-    color: #4a5568;
+    color: #b9bdcc;
     letter-spacing: 2px;
     text-transform: lowercase;
     margin-top: 10px;
@@ -197,10 +186,7 @@ section { padding: 80px 5%; width: 100%; }
 }
 
 /* ── Profile ── */
-.page-portfolio .profile-intro {
-    /* Gradient profil menggunakan transparan ke cedbce lembut */
-    background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(206,219,206,0.3) 100%);
-}
+.page-portfolio .profile-intro { background: none; }
 .profile-container {
     display: flex;
     justify-content: center;
@@ -213,53 +199,57 @@ section { padding: 80px 5%; width: 100%; }
 .profile-pic img {
     width: 200px; height: 200px;
     border-radius: 36px;
-    /* Shadow menggunakan tone sage cedbce lembut */
-    box-shadow: 0 16px 40px rgba(166,203,183,0.1);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.3);
     object-fit: cover;
-    border: 5px solid #fff;
+    border: 5px solid rgba(139,146,167,0.25);
     display: block;
 }
 .profile-text { text-align: left; max-width: 500px; }
 .profile-text h2 {
     font-family: 'M PLUS Rounded 1c', sans-serif;
-    font-weight: 700; color: #3d2f2b; /* Text nama: Cokelat tua hangat */
+    font-weight: 700;
+    color: #b9bdcc;
     font-size: clamp(1.5rem, 4vw, 1.9rem);
     margin-bottom: 16px;
 }
 .profile-text p {
-    font-size: 0.97rem; color: #4a5568; /* Text paragraf: abu-abu tua asli */
-    line-height: 1.85; margin-bottom: 12px;
+    font-size: 0.97rem;
+    color: #b9bdcc;
+    line-height: 1.85;
+    margin-bottom: 12px;
 }
 
 /* ── Skills ── */
-.page-portfolio .section-skills { background: linear-gradient(180deg,
-     rgba(206,219,206,0.15) 0%, #cfadad00 100%); }
+.page-portfolio .section-skills { background: none; }
 .skills-column {
     display: flex;
     flex-direction: column;
 }
 .skills-card {
-    background-color: #ffffff; /* Matches the white boxes from the original UI */
-    border-radius: 20px;       /* Smooth rounded look matching image_beedc3.jpg */
-    padding: 25px;             /* Padding around the entire inner list */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Soft background shadow */
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    border: 1px solid rgba(139,146,167,0.15);
     display: flex;
     flex-direction: column;
-    gap: 20px;                 /* Consistent vertical space between list items */
+    gap: 20px;
 }
 .skills-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 40px;
-    max-width: 960px;      /* Restricts the width so it doesn't stretch too wide */
-    margin: 0 auto;        /* Centers the entire skills section on the page */
+    max-width: 960px;
+    margin: 0 auto;
 }
 .skill-item {
     display: flex;
-    justify-content: space-between; /* Keeps them aligned on opposite sides of their inner space */
+    justify-content: space-between;
     align-items: center;
-    padding: 12px 15px;             /* Gives the text and stars a comfortable breathing room */
-    border-bottom: 1px solid #f0f0f0; 
+    padding: 12px 15px;
+    border-bottom: 1px solid rgba(139,146,167,0.1);
 }
 .skill-item:last-child {
     border-bottom: none;
@@ -270,7 +260,7 @@ section { padding: 80px 5%; width: 100%; }
     font-weight: 500;
     text-transform: lowercase;
     flex-grow: 1;
-    color: #4a5568;
+    color: #b9bdcc;
     font-size: 0.95rem;
     text-align: left;
 }
@@ -278,7 +268,7 @@ section { padding: 80px 5%; width: 100%; }
     margin-bottom: 15px;
     text-transform: capitalize;
     text-align: center;
-    color: #7fa190;
+    color: #b9bdcc;
     font-family: 'M PLUS Rounded 1c', sans-serif;
     font-size: 0.90rem;
     letter-spacing: 2.5px;
@@ -288,17 +278,14 @@ section { padding: 80px 5%; width: 100%; }
 .star-rating img { height: 1em; width: auto; object-fit: contain; }
 
 /* ── Creations ── */
-.page-portfolio .section-creations {
-    background: linear-gradient(180deg, rgba(206,219,206,0.15) 0%, rgba(255,255,255,0) 100%);
-}
-
+.page-portfolio .section-creations { background: none; }
 .creation-label {
     font-family: 'M PLUS Rounded 1c', sans-serif;
     font-size: 0.90rem;
     letter-spacing: 2.5px;
     font-weight: 700;
     text-transform: uppercase;
-    color: #7fa190; /* Label: a6cbb7 tua lembut */
+    color: #b9bdcc;
     text-align: center;
     margin-bottom: 28px;
 }
@@ -312,12 +299,13 @@ section { padding: 80px 5%; width: 100%; }
     margin: 0 auto;
 }
 .project-card {
-    background: #fff;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-radius: 22px;
     overflow: hidden;
-    /* Shadow menggunakan tone sage cedbce lembut */
-    box-shadow: 0 6px 24px rgba(166,203,183,0.06);
-    border: 1px solid rgba(255,255,255,0.9);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.2);
+    border: 1px solid rgba(139,146,167,0.15);
     transition: transform 0.35s cubic-bezier(0.165,0.84,0.44,1),
                 box-shadow 0.35s ease;
     display: flex;
@@ -325,14 +313,12 @@ section { padding: 80px 5%; width: 100%; }
 }
 .project-card:hover {
     transform: translateY(-6px);
-    /* Shadow menggunakan tone sage cedbce lebih lembut */
-    box-shadow: 0 18px 40px rgba(166,203,183,0.12);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.3);
 }
 .project-preview {
     width: 100%;
     height: 180px;
-    /* Gradient placeholder menggunakan tone sage cedbce dan e1e3e5 */
-    background: linear-gradient(135deg, rgba(206,219,206,0.6), rgba(225,227,229,1));
+    background: linear-gradient(135deg, rgba(221,196,185,0.12), rgba(106,118,153,0.12));
     overflow: hidden;
     position: relative;
     display: flex;
@@ -351,7 +337,7 @@ section { padding: 80px 5%; width: 100%; }
     justify-content: center;
     font-family: 'Borel', sans-serif;
     font-size: 1.3rem;
-    color: #3d2f2b; /* Text placeholder: Cokelat tua hangat */
+    color: #b9bdcc;
     opacity: 0.6;
     text-align: center;
     padding: 20px;
@@ -370,21 +356,21 @@ section { padding: 80px 5%; width: 100%; }
     font-weight: 700;
     letter-spacing: 0.8px;
     text-transform: uppercase;
-    color: #4a5568; /* Text tag: abu-abu tua asli */
-    /* Background tag: tone sage a6cbb7 tua lembut */
-    background: rgba(166,203,183,0.15);
+    color: #b9bdcc;
+    background: rgba(221,196,185,0.1);
     padding: 3px 10px;
     border-radius: 20px;
+    border: 1px solid rgba(221,196,185,0.2);
 }
 .project-info h3 {
     font-family: 'M PLUS Rounded 1c', sans-serif;
     font-weight: 700;
     font-size: 1.1rem;
-    color: #3d2f2b; /* Text judul project: Cokelat tua hangat */
+    color: #b9bdcc;
 }
 .project-info p {
     font-size: 0.88rem;
-    color: #4a5568; /* Text deskripsi project: abu-abu tua asli */
+    color: #b9bdcc;
     line-height: 1.7;
     flex: 1;
 }
@@ -393,10 +379,10 @@ section { padding: 80px 5%; width: 100%; }
     font-family: 'M PLUS Rounded 1c', sans-serif;
     font-size: 0.85rem;
     font-weight: 700;
-    color: #a6cbb7; /* Link project menggunakan a6cbb7 hangat lembut */
+    color: #b9bdcc;
     text-decoration: none;
     margin-top: 6px;
-    transition: gap 0.2s ease, opacity 0.2s ease;
+    transition: opacity 0.2s ease;
     letter-spacing: 0.3px;
 }
 .project-link:hover { opacity: 0.7; }
@@ -413,11 +399,13 @@ section { padding: 80px 5%; width: 100%; }
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: #fff;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     padding: 16px 16px 14px;
     border-radius: 22px;
-    box-shadow: 0 4px 18px rgba(0,0,0,0.02);
-    border: 1px solid rgba(255,255,255,0.9);
+    box-shadow: 0 4px 18px rgba(0,0,0,0.2);
+    border: 1px solid rgba(139,146,167,0.12);
     transition: transform 0.35s cubic-bezier(0.165,0.84,0.44,1),
                 box-shadow 0.35s ease;
     cursor: pointer;
@@ -425,8 +413,7 @@ section { padding: 80px 5%; width: 100%; }
 }
 .work-card:hover {
     transform: translateY(-8px);
-    /* Shadow menggunakan tone sage cedbce lebih lembut */
-    box-shadow: 0 18px 40px rgba(166,203,183,0.12);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.3);
 }
 .work-img-wrapper {
     width: 100%;
@@ -434,20 +421,18 @@ section { padding: 80px 5%; width: 100%; }
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #fff;
+    background: rgba(255,255,255,0.04);
     border-radius: 14px;
     overflow: hidden;
     padding: 6px;
 }
 .work-img-empty {
-    /* Background menggunakan tone sage a6cbb7 tua lembut */
-    background: rgba(166,203,183,0.1);
-    /* Border menggunakan tone sage cedbce lembut */
-    border: 1.5px dashed rgba(206,219,206,0.3);
+    background: rgba(139,146,167,0.07);
+    border: 1.5px dashed rgba(139,146,167,0.2);
 }
 .empty-plus {
     font-size: 1.8rem;
-    color: rgba(166,203,183,0.4); /* Tone sage tua lembut */
+    color: rgba(139,146,167,0.4);
     line-height: 1;
 }
 .work-card img {
@@ -461,29 +446,27 @@ section { padding: 80px 5%; width: 100%; }
     font-family: 'M PLUS Rounded 1c', sans-serif;
     font-size: 0.82rem;
     font-weight: 700;
-    color: #a6cbb7; /* Text illustration p menggunakan a6cbb7 hangat lembut */
+    color: #b9bdcc;
     text-transform: lowercase;
     text-align: center;
 }
-.empty-label { color: rgba(166,203,183,0.5) !important; }
+.empty-label { color: rgba(139,146,167,0.4) !important; }
 
 /* ── Contact ── */
 .page-portfolio .section-contact {
-    /* Gradient contact menggunakan transparan ke cedbce lembut */
-    background: linear-gradient(180deg, rgba(206,219,206,0.15) 0%, rgba(255,255,255,0) 100%);
+    background: none;
     padding-bottom: 120px;
 }
 .contact-form {
     max-width: 440px;
     margin: 0 auto;
-    background: rgba(255,255,255,0.8);
+    background: rgba(255,255,255,0.05);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     padding: 40px 38px;
     border-radius: 28px;
-    border: 1px solid rgba(255,255,255,0.65);
-    /* Shadow menggunakan tone sage cedbce lembut */
-    box-shadow: 0 16px 40px rgba(166,203,183,0.06);
+    border: 1px solid rgba(139,146,167,0.15);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.2);
 }
 .form-group {
     display: flex; flex-direction: column;
@@ -491,62 +474,58 @@ section { padding: 80px 5%; width: 100%; }
 }
 .form-group label {
     font-family: 'Borel', 'M PLUS Rounded 1c', sans-serif;
-    font-size: 0.85rem; color: #4a5568; /* Label label: abu-abu tua asli */
-    margin-bottom: 7px; font-weight: 700;
+    font-size: 0.85rem;
+    color: #b9bdcc;
+    margin-bottom: 7px;
+    font-weight: 700;
     letter-spacing: 0.4px;
 }
 input, textarea {
-    /* Border tone sage cedbce lembut */
-    border: 1.5px solid rgba(206,219,206,0.3);
+    border: 1.5px solid rgba(139,146,167,0.2);
     border-radius: 12px;
     padding: 12px 16px;
-    background: rgba(255,255,255,0.7);
-    color: #4a5568; /* Text input: abu-abu tua asli */
+    background: rgba(255,255,255,0.06);
+    color: #b9bdcc;
     font-family: 'M PLUS Rounded 1c', sans-serif;
     font-size: 0.92rem;
     width: 100%;
     transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
 }
-input::placeholder, textarea::placeholder { color: #b0bec5; }
+input::placeholder, textarea::placeholder { color: rgba(139,146,167,0.5); }
 input:focus, textarea:focus {
-    outline: none; background: #fff;
-    border-color: #a6cbb7; /* Border focus menggunakan a6cbb7 hangat lembut */
-    /* Shadow tone sage a6cbb7 tua lembut */
-    box-shadow: 0 0 0 3px rgba(166,203,183,0.1);
+    outline: none;
+    background: rgba(255,255,255,0.09);
+    border-color: #b9bdcc;
+    box-shadow: 0 0 0 3px rgba(221,196,185,0.1);
 }
 textarea { resize: vertical; min-height: 110px; }
 .submit-btn {
     width: 100%; padding: 13px;
     border: none; border-radius: 12px;
-    /* Gradient tombol menggunakan tone sage a6cbb7 tua lembut */
-    background: linear-gradient(135deg, #a6cbb7 0%, #7fa190 100%);
-    color: #fff;
+    background: #b9bdcc;
+    color: #383f4f;
     font-family: 'Borel', 'M PLUS Rounded 1c', sans-serif;
     font-weight: 700; font-size: 0.93rem;
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-    /* Shadow tone sage a6cbb7 tua lembut */
-    box-shadow: 0 8px 22px rgba(166,203,183,0.15);
+    box-shadow: 0 8px 22px rgba(0,0,0,0.2);
     margin-top: 6px; letter-spacing: 0.3px;
 }
 .submit-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 14px 28px rgba(166,203,183,0.25);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.3);
 }
 .submit-btn:active { transform: translateY(0); }
 
 /* ── Footer ── */
 footer {
     padding: 44px 0;
-    /* Background footer menggunakan cokelat tua hangat agar serasi dengan sage */
-    background: #3d2f2b;
-    /* Text footer menggunakan tone sage a6cbb7 tua lembut */
-    color: #a6cbb7;
+    background: rgba(0,0,0,0.2);
+    color: rgba(139,146,167,0.7);
     font-size: 0.85rem;
     font-family: 'M PLUS Rounded 1c', sans-serif;
     text-align: center;
     letter-spacing: 0.5px;
-    opacity: 0.7;
 }
 footer p { margin: 0; }
 
@@ -554,8 +533,7 @@ footer p { margin: 0; }
 .popup-overlay {
     position: fixed;
     top: 0; left: 0; width: 100vw; height: 100vh;
-    /* Background overlay menggunakan tone cokelat tua hangat */
-    background: rgba(61,47,43,0.55);
+    background: rgba(20,24,32,0.7);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     display: none;
@@ -568,14 +546,15 @@ footer p { margin: 0; }
     max-width: 580px; width: 100%;
 }
 .popup-content {
-    background: #fff;
+    background: #2e3444;
     padding: 32px;
     border-radius: 28px;
     max-height: 88vh;
     overflow-y: auto;
     display: flex; flex-direction: column;
     align-items: center; gap: 22px;
-    box-shadow: 0 32px 64px -12px rgba(0,0,0,0.15);
+    box-shadow: 0 32px 64px -12px rgba(0,0,0,0.4);
+    border: 1px solid rgba(139,146,167,0.15);
     animation: popIn 0.35s cubic-bezier(0.16,1,0.3,1);
 }
 @keyframes popIn {
@@ -587,7 +566,7 @@ footer p { margin: 0; }
     max-height: 40vh;
     object-fit: contain;
     border-radius: 18px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
     cursor: zoom-in;
     transition: transform 0.2s ease;
 }
@@ -597,23 +576,23 @@ footer p { margin: 0; }
     top: -50px; right: 4px;
     font-size: 2.4rem;
     cursor: pointer;
-    color: rgba(255,255,255,0.85);
+    color: rgba(238,225,217,0.7);
     transition: transform 0.2s ease, color 0.2s ease;
     line-height: 1; user-select: none;
 }
-.close-btn:hover { color: #fff; transform: rotate(90deg) scale(1.1); } /* Hover close text: Putih murni */
+.close-btn:hover { color: #b9bdcc; transform: rotate(90deg) scale(1.1); }
 .popup-text {
     text-align: left; width: 100%;
-    font-size: 0.95rem; color: #4a5568; /* Text paragraf: abu-abu tua asli */
+    font-size: 0.95rem;
+    color: #b9bdcc;
     font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 .popup-text p { margin: 9px 0; line-height: 1.6; }
-.popup-text strong { color: #3d2f2b; font-weight: 700; } /* Text strong popup: Cokelat tua hangat */
+.popup-text strong { color: #b9bdcc; font-weight: 700; }
 .popup-text .desc {
     margin-top: 16px; padding-top: 14px;
-    /* Border dashed tone sage a6cbb7 tua lembut */
-    border-top: 1px dashed rgba(166,203,183,0.2);
-    color: #4a5568; font-size: 0.91rem; /* Text paragraf deskripsi: abu-abu tua asli */
+    border-top: 1px dashed rgba(139,146,167,0.2);
+    color: #b9bdcc; font-size: 0.91rem;
 }
 
 /* ============================================
@@ -628,12 +607,13 @@ footer p { margin: 0; }
 .page-blog .blog-header h1 {
     font-family: 'Borel', sans-serif;
     font-size: clamp(2rem, 6vw, 3.2rem);
-    color: #3d2f2b; /* Judul hero blog menggunakan cokelat tua hangat agar serasi dengan sage */
+    color: #b9bdcc;
     opacity: 0;
     animation: heroIn 0.9s cubic-bezier(0.22,1,0.36,1) 0.2s forwards;
 }
 .page-blog .blog-header p {
-    font-size: 0.88rem; color: #4a5568; /* Subtitle blog menggunakan abu-abu tua asli untuk kebersihan */
+    font-size: 0.88rem;
+    color: #b9bdcc;
     letter-spacing: 1.5px; text-transform: lowercase;
     margin-top: 8px; opacity: 0;
     animation: heroIn 0.9s cubic-bezier(0.22,1,0.36,1) 0.35s forwards;
@@ -652,43 +632,43 @@ footer p { margin: 0; }
     position: sticky; top: 80px;
 }
 .directory-card {
-    background: rgba(255,255,255,0.8);
+    background: rgba(255,255,255,0.05);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-radius: 20px;
     padding: 24px 20px;
     text-align: left;
-    border: 1px solid rgba(255,255,255,0.7);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.02);
+    border: 1px solid rgba(139,146,167,0.15);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
 }
 .directory-toggle {
-    color: #3d2f2b; /* Text directory toggle: Cokelat tua hangat */
+    color: #b9bdcc;
     font-family: 'Borel', 'M PLUS Rounded 1c', sans-serif;
     font-weight: 700; font-size: 0.95rem;
     margin: 0 0 12px;
     cursor: pointer; user-select: none;
     letter-spacing: 0.3px;
     padding-bottom: 10px;
-    /* Border tone sage a6cbb7 tua lembut */
-    border-bottom: 1.5px solid rgba(166,203,183,0.15);
+    border-bottom: 1.5px solid rgba(139,146,167,0.12);
     transition: color 0.2s ease;
     display: block;
 }
-.directory-toggle:hover { color: #a6cbb7; } /* Hover directory text menggunakan a6cbb7 hangat lembut */
+.directory-toggle:hover { color: #b9bdcc; }
 .directory-list {
     list-style: none; padding: 0; margin: 0 0 4px;
     display: flex; flex-direction: column; gap: 4px;
 }
 .directory-list li a {
-    text-decoration: none; color: #4a5568; /* Text paragraf directory: abu-abu tua asli */
+    text-decoration: none;
+    color: #b9bdcc;
     font-size: 0.86rem; display: block;
     padding: 5px 10px; border-radius: 8px;
     transition: all 0.2s ease;
     font-family: 'Borel', 'M PLUS Rounded 1c', sans-serif;
 }
 .directory-list li a:hover {
-    color: #3d2f2b; /* Hover directory text menggunakan cokelat tua hangat agar serasi dengan sage */
-    background: rgba(206,219,206,0.3); /* Tone sage cedbce lembut */
+    color: #b9bdcc;
+    background: rgba(139,146,167,0.1);
     padding-left: 14px;
 }
 .blog-container {
@@ -696,33 +676,35 @@ footer p { margin: 0; }
     flex-direction: column; gap: 36px; min-width: 0;
 }
 .blog-post {
-    background: rgba(255,255,255,0.84);
+    background: rgba(255,255,255,0.05);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-radius: 24px;
     padding: 40px 44px;
-    border: 1px solid rgba(255,255,255,0.75);
-    box-shadow: 0 10px 32px rgba(0,0,0,0.02);
+    border: 1px solid rgba(139,146,167,0.12);
+    box-shadow: 0 10px 32px rgba(0,0,0,0.2);
     transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s ease;
 }
 .blog-post:hover {
     transform: translateY(-4px);
-    box-shadow: 0 18px 44px rgba(0,0,0,0.04);
+    box-shadow: 0 18px 44px rgba(0,0,0,0.3);
 }
 .blog-content h2 {
     font-family: 'Borel', 'M PLUS Rounded 1c', sans-serif;
-    color: #3d2f2b; font-size: clamp(1.3rem, 3vw, 1.7rem); /* Judul blog menggunakan cokelat tua hangat agar serasi dengan sage */
+    color: #b9bdcc;
+    font-size: clamp(1.3rem, 3vw, 1.7rem);
     margin-bottom: 8px;
 }
 .blog-date {
-    font-size: 0.8rem; color: #a6cbb7; /* Date blog menggunakan a6cbb7 tua lembut */
+    font-size: 0.8rem;
+    color: #b9bdcc;
     margin-bottom: 20px; font-weight: 700;
     letter-spacing: 1px; text-transform: uppercase;
-    display: block; opacity: 0.8;
+    display: block; opacity: 0.9;
 }
 .blog-content p {
     font-size: 0.97rem; line-height: 1.95;
-    color: #4a5568; text-align: justify; /* Text paragraf deskripsi: abu-abu tua asli */
+    color: #b9bdcc; text-align: justify;
 }
 
 /* ============================================
@@ -749,7 +731,6 @@ footer p { margin: 0; }
    ============================================ */
 
 @media (max-width: 640px) {
-    /* Show hamburger, hide desktop nav links */
     .nav-toggle { display: flex; }
     .nav-container {
         display: none;
@@ -758,12 +739,12 @@ footer p { margin: 0; }
         flex-direction: column;
         align-items: center;
         gap: 0;
-        background: rgba(255,255,255,0.96);
+        background: rgba(44,50,64,0.98);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
-        border-top: 1px solid rgba(206,219,206,0.2); /* Tone sage cedbce lembut */
+        border-top: 1px solid rgba(139,146,167,0.12);
         padding: 16px 0 20px;
-        box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.2);
     }
     nav.nav-open .nav-container {
         display: flex;
@@ -772,7 +753,7 @@ footer p { margin: 0; }
     .nav-container a {
         width: 100%; text-align: center;
         padding: 12px 0; font-size: 1rem;
-        border-bottom: 1px solid rgba(206,219,206,0.1); /* Tone sage cedbce lembut */
+        border-bottom: 1px solid rgba(139,146,167,0.08);
     }
     .nav-container a:last-child { border-bottom: none; }
 
@@ -780,7 +761,6 @@ footer p { margin: 0; }
 
     .page-portfolio header { padding-top: 100px; }
 
-    /* Profile stacks */
     .profile-container {
         flex-direction: column;
         text-align: center; gap: 24px;
@@ -788,19 +768,16 @@ footer p { margin: 0; }
     .profile-pic img { width: 160px; height: 160px; }
     .profile-text { text-align: center; }
 
-    /* Skills single column */
     .skills-grid {
         grid-template-columns: 1fr;
         max-width: 100%;
     }
 
-    /* Projects single column */
     .projects-grid {
         grid-template-columns: 1fr;
         max-width: 100%;
     }
 
-    /* Illustrations 2 column */
     .works-grid {
         grid-template-columns: repeat(2, 1fr);
         max-width: 100%;
@@ -809,7 +786,6 @@ footer p { margin: 0; }
 
     .contact-form { padding: 26px 20px; }
 
-    /* Blog */
     .blog-layout {
         flex-direction: column;
         padding: 0 16px;
