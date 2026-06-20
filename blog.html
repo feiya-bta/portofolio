@@ -17,6 +17,7 @@
         </div>
     </nav>
 
+    <!-- BLOG HEADER -->
     <div class="blog-header">
         <h1>Olivia's Blog</h1>
         <p class="subtitle">diary · thoughts · memory</p>
@@ -24,6 +25,7 @@
 
     <main class="blog-layout">
 
+        <!-- SIDEBAR -->
         <aside class="blog-sidebar">
             <div class="directory-card reveal">
                 <h3 class="directory-toggle">2025年 ▼</h3>
@@ -34,11 +36,12 @@
 
                 <h3 class="directory-toggle" style="margin-top: 20px;">2026年 ▶</h3>
                 <ul class="directory-list" style="display: none;">
-                    <li><a href="#" onclick="return false;" style="color: #b0bec5; pointer-events: none; cursor: default;">coming soon...</a></li>
+                    <li><a href="#" onclick="return false;" style="color: #c4a08a; pointer-events: none; cursor: default;">coming soon...</a></li>
                 </ul>
             </div>
         </aside>
 
+        <!-- BLOG POSTS -->
         <section class="blog-container">
 
             <article class="blog-post reveal" id="post-1022">
@@ -68,7 +71,7 @@
                     <h2>彼と過ごす幸せな時間</h2>
                     <span class="blog-date">2025 / 11 / 10 — monday</span>
                     <p>
-                        今日は学校でスーツチェックがあります。彼のスーツ姿を見るだけで、心臓がドキドキしちゃう.
+                        今日は学校でスーツチェックがあります。彼のスーツ姿を見るだけで、心臓がドキドキしちゃう。
                         私もスーツでした。彼に「めちゃくちゃ綺麗だね」って言われました。お昼も一緒に過ごした。
                         <br><br>
                         実はお昼に彼のネクタイを結んであげたくて挑戦してみたんだけど……少し上手くいかなくて、
@@ -117,12 +120,19 @@
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        /* ── Sidebar year toggles ── */
+        /* ── Sidebar year toggles (UPDATED FIX) ── */
         document.querySelectorAll('.directory-toggle').forEach(toggle => {
             toggle.addEventListener('click', function () {
                 const list = this.nextElementSibling;
-                const isOpen = list.style.display !== 'none';
-                list.style.display = isOpen ? 'none' : 'flex';
+                
+                // Uses getComputedStyle to see the actual display state
+                const currentDisplay = window.getComputedStyle(list).display;
+                const isOpen = currentDisplay !== 'none';
+                
+                // Switches between hiding and showing
+                list.style.display = isOpen ? 'none' : 'block'; 
+                
+                // Flips the arrow direction
                 this.textContent = this.textContent
                     .replace(isOpen ? '▼' : '▶', isOpen ? '▶' : '▼');
             });
