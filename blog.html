@@ -19,7 +19,6 @@
 
     <div class="blog-header">
         <h1>Olivia's Blog</h1>
-        <p>日記 · diary · thoughts</p>
     </div>
 
     <main class="blog-layout">
@@ -44,7 +43,7 @@
             <article class="blog-post reveal" id="post-1022">
                 <div class="blog-content">
                     <h2>学校が、一番大好きな場所に変わった日</h2>
-                    <span class="blog-date">2025 / 10 / 27 — Monday</span>
+                    <span class="blog-date">2025 / 10 / 27 — monday</span>
                     <p>
                         今日は少し早めに学校へ行って勉強。9時半ごろ、彼もやってきた。
                         二人で一緒にベトナム語の勉強をしたんだけど、彼が本当に可愛くて。
@@ -66,7 +65,7 @@
             <article class="blog-post reveal reveal-delay-2" id="post-1110">
                 <div class="blog-content">
                     <h2>彼と過ごす幸せな時間</h2>
-                    <span class="blog-date">2025 / 11 / 10 — Monday</span>
+                    <span class="blog-date">2025 / 11 / 10 — monday</span>
                     <p>
                         今日は学校でスーツチェックがあります。彼のスーツ姿を見るだけで、心臓がドキドキしちゃう。
                         私もスーツでした。彼に「めちゃくちゃ綺麗だね」って言われました。お昼も一緒に過ごした。
@@ -100,12 +99,18 @@
             nav.classList.toggle('scrolled', window.scrollY > 40);
         }, { passive: true });
 
-        /* ── Scroll reveal ── */
+        /* ── Scroll reveal — in AND out ── */
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(e => {
                 if (e.isIntersecting) {
                     e.target.classList.add('revealed');
-                    observer.unobserve(e.target);
+                    e.target.classList.remove('unrevealed');
+                } else {
+                    /* Only fade out if already revealed (not on first load) */
+                    if (e.target.classList.contains('revealed')) {
+                        e.target.classList.remove('revealed');
+                        e.target.classList.add('unrevealed');
+                    }
                 }
             });
         }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
