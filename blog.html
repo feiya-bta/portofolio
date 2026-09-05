@@ -19,8 +19,8 @@
 
     <!-- BLOG HEADER -->
     <div class="blog-header">
-        <h1>Olivia's Blog</h1>
-        <p class="subtitle">diary · thoughts · memory</p>
+        <h1>             </h1>
+        <p class="subtitle">            </p>
     </div>
 
     <main class="blog-layout">
@@ -124,14 +124,14 @@
         document.querySelectorAll('.directory-toggle').forEach(toggle => {
             toggle.addEventListener('click', function () {
                 const list = this.nextElementSibling;
-                
+
                 // Uses getComputedStyle to see the actual display state
                 const currentDisplay = window.getComputedStyle(list).display;
                 const isOpen = currentDisplay !== 'none';
-                
+
                 // Switches between hiding and showing
-                list.style.display = isOpen ? 'none' : 'block'; 
-                
+                list.style.display = isOpen ? 'none' : 'block';
+
                 // Flips the arrow direction
                 this.textContent = this.textContent
                     .replace(isOpen ? '▼' : '▶', isOpen ? '▶' : '▼');
